@@ -19,7 +19,9 @@ const server = http.createServer((req, res) => {
             .replace('%name%', name)
             .replace('%datetime%', currentDate);
 
-        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.writeHead(200, { 'Content-Type': 'text/html',
+            "Access-Control-Allow-Origin": "*",
+         });
         res.end(`<p style="color:blue;">${message}</p>`);
     } else if (pathnameParts[0].toLowerCase() === 'writefile') {
         const text = parsedUrl.query.text || 'Default Text';
